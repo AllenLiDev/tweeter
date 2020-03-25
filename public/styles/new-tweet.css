@@ -1,0 +1,23 @@
+.new-tweet textarea {
+  border: none;
+  resize: none;
+  width: 100%;
+  background-color: inherit;
+  border-bottom: 5px solid black;
+}
+
+.new-tweet button {
+  font-family: 'Bungee', cursive;
+  color: #FFF;
+  background-color: #4056A1;
+}
+
+.new-tweet output {
+  position: absolute;
+  font-family: 'Bungee', cursive;
+  right: 0;
+}
+
+.new-tweet {
+  padding-bottom: 20px;
+}

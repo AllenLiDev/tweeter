@@ -1,0 +1,28 @@
+.tweet-container {
+  border: 5px solid black;
+  filter: blur(2px);
+}
+
+.tweet-container header {
+  background-image: none;
+  background-color: inherit;
+  min-width: 100%;
+  height: inherit;
+  position: inherit;
+  padding: 10px 25px 0px;
+}
+
+.tweet-container p {
+  padding: 25px 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 5px solid black;
+}
+
+.tweet-container footer {
+  padding: 10px 25px;
+}
+
+.tweet-container .handle {
+  visibility: hidden;
+}
