@@ -7,11 +7,15 @@ $(() => {
   const createTweetElement = (post) => {
     let $article = $('<article>').addClass('tweet-container');
     let $header = $('<header>').addClass('space-between');
-    let $headerLeft = $('<div>').text(post.user.name);
+    let $avatar = $('<img>', { 'src': post.user.avatars });
+    let $headerLeft = $('<div>')
+    let $headerLeftInner = $('<span>').text(post.user.name);
     let $headerRight = $('<div>').addClass("handle").text(post.user.handle);
     let $content = $('<p>').text(post.content.text);
     let $footer = $('<footer>').addClass('space-between');
     let $footerLeft = $('<div>').text(getDate(post.created_at));
+    $headerLeft.append($avatar);
+    $headerLeft.append($headerLeftInner);
     $header.append($headerLeft);
     $header.append($headerRight);
     $article.append($header);
@@ -24,7 +28,6 @@ $(() => {
   const getDate = (num) => {
     const now = new Date().getTime();
     let days = 0;
-    console.log(num, now)
     days = Math.round((now - num) / (1000 * 60 * 60 * 24))
     if (days === 0) {
       return Math.round((now - num) / (1000 * 60 * 60)) + " hours ago";
@@ -75,7 +78,9 @@ $(() => {
   }
 
   const renderTweets = function (tweets) {
+    $('#tweets').empty();
     for (const tweet of tweets) {
+      console.log(tweet)
       $('#tweets').prepend(createTweetElement(tweet));
     }
     $.getScript('/scripts/tweet.js');

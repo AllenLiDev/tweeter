@@ -11,7 +11,7 @@ $(() => {
     function () {
       const element = $(this);
       element.css({
-        "filter": "blur(2px)",
+        "filter": "blur(0.5px)",
         "box-shadow": "none"
       });
       element.children("header").children(".handle").css("visibility", "hidden");

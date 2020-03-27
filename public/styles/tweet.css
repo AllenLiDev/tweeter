@@ -27,3 +27,7 @@
 .tweet-container .handle {
   visibility: hidden;
 }
+
+.tweet-container img {
+  padding-right: 10px;
+}
