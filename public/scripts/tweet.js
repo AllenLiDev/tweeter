@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(() => {
   $(".tweet-container").hover(
     function () {
       const element = $(this);

@@ -34,13 +34,14 @@
   <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
   <!-- Tweet JS -->
-  <script type="text/javascript" src="/scripts/tweet.js"></script>
-</head>
+  <!-- <script type="text/javascript" src="/scripts/tweet.js"></script>
+</head> -->
 
 <body>
   <!-- Top nav bar (fixed) -->
-  <nav>
+  <nav class="space-between">
     <span>tweeter</span>
+    <span>Write a tweet</span>
   </nav>
 
   <!-- Header -->
@@ -54,6 +55,8 @@
   <!-- Page-specific (main) content here -->
   <main>
     <section class="new-tweet">
+      <div class="error-message">
+      </div>
       <h2>Compose Tweet</h2>
       <form action="/tweets/" method="POST">
         <label for="tweet-text">What are you humming about?</label>

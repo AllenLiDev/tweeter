@@ -21,3 +21,13 @@
 .new-tweet {
   padding-bottom: 20px;
 }
+
+.new-tweet .error-message {
+  display: none;
+  border: 1px dotted red;
+  margin-top: 10px;
+  padding: 10px 10px;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}

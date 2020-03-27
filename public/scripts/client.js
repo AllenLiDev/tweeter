@@ -11,7 +11,7 @@ $(() => {
     let $headerRight = $('<div>').addClass("handle").text(post.user.handle);
     let $content = $('<p>').text(post.content.text);
     let $footer = $('<footer>').addClass('space-between');
-    let $footerLeft = $('<div>').text(post.created_at);
+    let $footerLeft = $('<div>').text(getDate(post.created_at));
     $header.append($headerLeft);
     $header.append($headerRight);
     $article.append($header);
@@ -19,42 +19,67 @@ $(() => {
     $footer.append($footerLeft);
     $article.append($footer);
     return $article;
+  };
+
+  const getDate = (num) => {
+    const now = new Date().getTime();
+    let days = 0;
+    console.log(num, now)
+    days = Math.round((now - num) / (1000 * 60 * 60 * 24))
+    if (days === 0) {
+      return Math.round((now - num) / (1000 * 60 * 60)) + " hours ago";
+    }
+    return days + " days ago";
   }
+
+  const loadTweets = () => {
+    $.get("/tweets", function (data) {
+      renderTweets(data);
+    });
+  };
+
   const $form = $('form');
   $form.on('submit', (event) => {
     event.preventDefault();
     const formData = $form.serialize();
-  })
-  const tweets = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
+    if (validateForm(formData)) {
+      $.post('/tweets', formData)
+        .then((res) => {
+          loadTweets();
+        });
     }
-  ]
+  });
+
+  const validateForm = (formData) => {
+    let cleanData = formData.substring(5);
+    const errorContainer = $(".error-message");
+    if (cleanData.length === 0) {
+      errorContainer.text("🚨 Please Enter A Message to Tweet 🚨")
+      errorContainer.slideDown("slow", () => {
+        setTimeout(() => {
+          errorContainer.slideUp("slow");
+        }, 3000);
+      });
+      return false;
+    } else if (cleanData.length > 140) {
+      errorContainer.text("🚨 Please Enter A Message Shorter than 140 Characters 🚨")
+      errorContainer.slideDown("slow", () => {
+        setTimeout(() => {
+          errorContainer.slideUp("slow");
+        }, 3000);
+      });
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   const renderTweets = function (tweets) {
     for (const tweet of tweets) {
-      $('#tweets').append(createTweetElement(tweet));
+      $('#tweets').prepend(createTweetElement(tweet));
     }
+    $.getScript('/scripts/tweet.js');
   }
-  renderTweets(tweets);
+
+  loadTweets();
 });

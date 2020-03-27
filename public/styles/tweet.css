@@ -1,6 +1,7 @@
 .tweet-container {
   border: 5px solid black;
-  filter: blur(2px);
+  filter: blur(0.5px);
+  margin: 25px 0;
 }
 
 .tweet-container header {

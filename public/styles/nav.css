@@ -6,8 +6,11 @@ nav {
   color: #FFF;
   z-index: 1;
   padding: 1.5em;
+  font-family: 'Bungee', cursive;
 }
 
 nav span {
-  font-family: 'Bungee', cursive;
+  height:48px;
+  line-height:48px;
+  text-align: center;
 }
