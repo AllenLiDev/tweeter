@@ -1,4 +1,8 @@
 $(() => {
+  $(".show-form").click((e) => {
+    e.preventDefault();
+    $(".new-tweet").show();
+  })
   $(".tweet-container").hover(
     function () {
       const element = $(this);

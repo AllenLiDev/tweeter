@@ -80,7 +80,6 @@ $(() => {
   const renderTweets = function (tweets) {
     $('#tweets').empty();
     for (const tweet of tweets) {
-      console.log(tweet)
       $('#tweets').prepend(createTweetElement(tweet));
     }
     $.getScript('/scripts/tweet.js');
