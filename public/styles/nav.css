@@ -18,4 +18,7 @@ nav span {
 nav a {
   color: #FFF;
   text-decoration: none;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
 }
