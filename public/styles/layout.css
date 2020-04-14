@@ -46,4 +46,16 @@ main .new-tweet{
     display: flex;
     flex-wrap: wrap;
   }
+
+  .my-avatar {
+
+    width: 30%;
+    position: relative;
+  }
+
+  main {
+
+    width: 60%;
+    position: relative;
+  }
 }
