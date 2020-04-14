@@ -1,7 +1,7 @@
 $(() => {
   $(".show-form").click((e) => {
     e.preventDefault();
-    $(".new-tweet").show();
+    $(".new-tweet").toggle();
   })
   $(".tweet-container").hover(
     function () {
